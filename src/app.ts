@@ -21,6 +21,10 @@ app.post("/api/v1/usuario/cadastro",(req,res)=>{
     us.cadastrarUsuario(req,res)
 })
 
+app.post("/api/v1/usuario/login",(req,res)=>{
+    us.loginUsuario(req,res)
+})
+
 // ################################## Pet ##################################
 app.get("/api/v1/pet/listar",(req,res)=>{
     pte.listarPets(req,res)

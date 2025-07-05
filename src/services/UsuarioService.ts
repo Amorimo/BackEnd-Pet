@@ -25,7 +25,7 @@ export default class UsuarioService{
         us.preferencia = req.body.preferencia;
 
         try{
-            let rs = await this.usuarioRepo.Cadastrar(us)
+            const rs = await this.usuarioRepo.Cadastrar(us)
             return res.status(201).json(rs)
         }
         catch(erro){
@@ -44,7 +44,7 @@ export default class UsuarioService{
     }
 
     async loginUsuario(req:Request, res:Response){
-        let us = req.body.Usuario;
+        let us = req.body.usuario;
         let sh = req.body.senha;
 
         try{
@@ -52,7 +52,7 @@ export default class UsuarioService{
             if(rs==null){
                 return res.status(401).json({msg:`Usuário ou senha inválidos`})
             }
-            bcrypt.compare(sh, rs[0].senha,(erro,igual)=>{
+            bcrypt.compare(sh,rs[0].senha,(erro,igual)=>{
                 if(!igual){
                     return res.status(401).json({msg:`Usuário ou senha inválidos`});
                 }
